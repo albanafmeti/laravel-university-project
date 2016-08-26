@@ -20,10 +20,10 @@ class StudentsTableSeeder extends Seeder
 
             $branch = Branch::all()->random(1);
 
-            DB::table('posts')->insert([
+            DB::table('students')->insert([
                 'firstname' => $faker->firstName(),
                 'lastname' => $faker->lastName(),
-                'date' => $faker->date(),
+                'birthday' => $faker->date(),
                 'branch_id' => $branch->id,
                 'created_at' => $faker->dateTime($max = 'now'),
                 'updated_at' => $faker->dateTime($max = 'now'),

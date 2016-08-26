@@ -4,55 +4,59 @@
 
 @section('content')
 
-    <div class="col-md-12">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">Students List</div>
+            <div class="panel-body">
+                @if(count($students))
 
-        @if(count($students))
+                    <table id="dataTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Birthday</th>
+                            <th>Branch</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
 
-            <table id="dataTable" class="display" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Birthday</th>
-                    <th>Branch</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-                </thead>
+                        <tbody>
 
-                <tbody>
+                        @foreach($students as $student)
 
-                @foreach($students as $student)
+                            <tr>
+                                <td>{{ $student->id }}</td>
+                                <td>{{ $student->firstname }}</td>
+                                <td>{{ $student->lastname }}</td>
+                                <td>{{ $student->birthday }}</td>
+                                <td>{{ $student->branch->name }}</td>
+                                <td>
+                                    <div style="float: right">
 
-                    <tr>
-                        <td>{{ $student->id }}</td>
-                        <td>{{ $student->firstname }}</td>
-                        <td>{{ $student->lastname }}</td>
-                        <td>{{ $student->birthday }}</td>
-                        <td>{{ $student->branch->name }}</td>
-                        <td>
-                            <div style="float: right">
-
-                                {!! Form::open(['route'=>['student.destroy', $student->id], 'method'=>'DELETE']) !!}
-                                <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
-                                        class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
-                                {!! Form::close() !!}
-                            </div>
-                            <a href="{{ route("student.edit", $student->id) }}"
-                               class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
-                                        class="fa fa-pencil"></span></a>
+                                        {!! Form::open(['route'=>['student.destroy', $student->id], 'method'=>'DELETE']) !!}
+                                        <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
+                                                class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                    <a href="{{ route("student.edit", $student->id) }}"
+                                       class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
+                                                class="fa fa-pencil"></span></a>
 
 
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
 
-                @endforeach
-                </tbody>
-            </table>
-        @else
-            <p class="alert alert-warning text-center">There are no students.</p>
-        @endif
+                        @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="alert alert-warning text-center">There are no students.</p>
+                @endif
 
+            </div>
+        </div>
     </div>
 
 

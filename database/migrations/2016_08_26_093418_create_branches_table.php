@@ -17,7 +17,7 @@ class CreateBranchesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('faculty_id')->unsigned();
-            $table->foreign('faculty_id')->references('id')->on('faculties')->onUpdate('cascade');
+            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

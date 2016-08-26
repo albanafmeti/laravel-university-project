@@ -4,51 +4,56 @@
 
 @section('content')
 
-    <div class="col-md-12">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">Branches List</div>
+            <div class="panel-body">
 
-        @if(count($branches))
+                @if(count($branches))
 
-            <table id="dataTable" class="display" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Faculty</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-                </thead>
+                    <table id="dataTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Faculty</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
 
-                <tbody>
+                        <tbody>
 
-                @foreach($branches as $branch)
+                        @foreach($branches as $branch)
 
-                    <tr>
-                        <td>{{ $branch->id }}</td>
-                        <td>{{ $branch->name }}</td>
-                        <td>{{ $branch->faculty->name }}</td>
-                        <td>
-                            <div style="float: right">
+                            <tr>
+                                <td>{{ $branch->id }}</td>
+                                <td>{{ $branch->name }}</td>
+                                <td>{{ $branch->faculty->name }}</td>
+                                <td>
+                                    <div style="float: right">
 
-                                {!! Form::open(['route'=>['branch.destroy', $branch->id], 'method'=>'DELETE']) !!}
-                                <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
-                                        class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
-                                {!! Form::close() !!}
-                            </div>
-                            <a href="{{ route("branch.edit", $branch->id) }}"
-                               class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
-                                        class="fa fa-pencil"></span></a>
+                                        {!! Form::open(['route'=>['branch.destroy', $branch->id], 'method'=>'DELETE']) !!}
+                                        <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
+                                                class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                    <a href="{{ route("branch.edit", $branch->id) }}"
+                                       class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
+                                                class="fa fa-pencil"></span></a>
 
 
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
 
-                @endforeach
-                </tbody>
-            </table>
-        @else
-            <p class="alert alert-warning text-center">There are no branches.</p>
-        @endif
+                        @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="alert alert-warning text-center">There are no branches.</p>
+                @endif
 
+            </div>
+        </div>
     </div>
 
 

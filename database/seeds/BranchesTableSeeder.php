@@ -20,7 +20,7 @@ class BranchesTableSeeder extends Seeder
 
             $faculty = Faculty::all()->random(1);
 
-            DB::table('posts')->insert([
+            DB::table('branches')->insert([
                 'name' => "Branch of " . $faker->unique()->city,
                 'faculty_id' => $faculty->id,
                 'created_at' => $faker->dateTime($max = 'now'),

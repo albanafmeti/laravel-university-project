@@ -4,58 +4,62 @@
 
 @section('content')
 
-    <div class="col-md-12">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">Faculties List</div>
+            <div class="panel-body">
 
-        @if(count($faculties))
+                @if(count($faculties))
+                    <table id="dataTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>University</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
 
-            <table id="dataTable" class="display" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>University</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-                </thead>
+                        <tbody>
 
-                <tbody>
+                        @foreach($faculties as $faculty)
 
-                @foreach($faculties as $faculty)
+                            <tr>
+                                <td>{{ $faculty->id }}</td>
+                                <td>{{ $faculty->name }}</td>
+                                <td>{{ $faculty->university->name }}</td>
+                                <td>
+                                    <div style="float: right">
 
-                    <tr>
-                        <td>{{ $faculty->id }}</td>
-                        <td>{{ $faculty->name }}</td>
-                        <td>{{ $faculty->university->name }}</td>
-                        <td>
-                            <div style="float: right">
-
-                                {!! Form::open(['route'=>['faculty.destroy', $faculty->id], 'method'=>'DELETE']) !!}
-                                <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
-                                        class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
-                                {!! Form::close() !!}
-                            </div>
-                            <a href="{{ route("faculty.edit", $faculty->id) }}"
-                               class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
-                                        class="fa fa-pencil"></span></a>
+                                        {!! Form::open(['route'=>['faculty.destroy', $faculty->id], 'method'=>'DELETE']) !!}
+                                        <button name="submit" type="submit" data-toggle="tooltip" title="Delete"
+                                                class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                    <a href="{{ route("faculty.edit", $faculty->id) }}"
+                                       class="btn btn-sm btn-info pull-right" style="margin-right: 5px"><span
+                                                class="fa fa-pencil"></span></a>
 
 
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
 
-                @endforeach
-                </tbody>
-            </table>
-        @else
-            <p class="alert alert-warning text-center">There are no faculties.</p>
-        @endif
-
+                        @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p class="alert alert-warning text-center">There are no faculties.</p>
+                @endif
+            </div>
+        </div>
     </div>
+
 
 
     <p>&nbsp;</p>
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            <div class="panel-heading">Add New Faculty</div>
+            <div class="panel-heading">Add Faculty</div>
 
             <div class="panel-body">
                 <div class="row">

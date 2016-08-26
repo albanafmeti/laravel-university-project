@@ -14,9 +14,15 @@ class UniversitiesTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        $description = '';
+        foreach ($faker->paragraphs(3, false) as $paragraph) {
+            $description .= "$paragraph<br>";
+        }
+
         foreach (range(1, 10) as $index) {
             DB::table('universities')->insert([
                 'name' => "University of " . $faker->unique()->city,
+                'description' => $description,
                 'created_at' => $faker->dateTime($max = 'now'),
                 'updated_at' => $faker->dateTime($max = 'now'),
             ]);

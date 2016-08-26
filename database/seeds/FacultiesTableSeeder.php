@@ -20,7 +20,7 @@ class FacultiesTableSeeder extends Seeder
 
             $university = University::all()->random(1);
 
-            DB::table('posts')->insert([
+            DB::table('faculties')->insert([
                 'name' => "Faculty of " . $faker->unique()->city,
                 'university_id' => $university->id,
                 'created_at' => $faker->dateTime($max = 'now'),

@@ -8,10 +8,12 @@
         </div>
     </div>
 
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">Students of <strong>University</strong>.</div>
-            <div class="panel-body">
+    @if(Auth::check())
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Students of <strong>University</strong>.</div>
+                <div class="panel-body">
 
                     @if(count($students))
 
@@ -61,10 +63,10 @@
                         <p class="alert alert-warning text-center">There are no students.</p>
                     @endif
 
+                </div>
             </div>
         </div>
-    </div>
-
+    @endif
 @endsection
 
 @section("stylesheets")
