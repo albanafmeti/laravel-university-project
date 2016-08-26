@@ -72,7 +72,7 @@
                         {!! Form::open(array('route' => 'student.store', 'class'=>'data-form')) !!}
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             {!! Form::label('firstname', 'FirstName') !!}
-                            {!! Form::text('firstname', null, ['class'=>'form-control input-lg', 'placeholder'=>'First Name', 'value'=>old('firstname')]) !!}
+                            {!! Form::text('firstname', null, ['class'=>'form-control input-lg', 'placeholder'=>'FirstName', 'value'=>old('firstname')]) !!}
 
                             @if ($errors->has('firstname'))
                                 <span class="help-block">
