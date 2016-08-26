@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '| Faculties')
+@section('title', '| Branches')
 
 @section('content')
 
