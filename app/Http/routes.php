@@ -11,6 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "PagesController@getIndex");
+
+Route::auth();
+
+Route::resource('university', 'UniversitiesController',
+    ['except' =>
+        [
+            'create', 'show'
+        ]
+    ]);
+
+Route::resource('faculty', 'FacultiesController',
+    ['except' =>
+        [
+            'create', 'show'
+        ]
+    ]);
+
+Route::resource('branch', 'BranchesController',
+    ['except' =>
+        [
+            'create', 'show'
+        ]
+    ]);
+
+Route::resource('student', 'StudentsController',
+    ['except' =>
+        [
+            'create', 'show'
+        ]
+    ]);
