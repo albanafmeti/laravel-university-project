@@ -1,4 +1,4 @@
-# university_laravel
+# Laravel University Project
 This repo used to create a simple backend administration panel for structure of university students
 
 ## Requirements to fulfill this project
